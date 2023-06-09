@@ -12,18 +12,26 @@
 
   <body class="body">
     <div class="page">
+
       <header class="header">
         <img src="./images/Vector.png" alt="Лого Место" class="header__logo" />
+
       </header>
+
       <section class="profile">
-        <div class="profile__avatar"></div>
         <div class="profile__info">
-          <h1 class="profile__title">Жак-Ив Кусто</h1>
+          <div class="profile__logo-wrapper">
+            <img src="./images/image.png" alt="" class="profile__avatar">
+          </div>
+          <div class="profile__heading">
+            <h1 class="profile__title">Жак-Ив Кусто</h1>
+            <img class="profile__edit-btn" src="./images/Edit__Button.svg"></img>
+          </div>
           <p class="profile__subtitle">Исследователь океана</p>
-          <button class="profile__edit-btn"></button>
         </div>
-        <button class="profile__add-btn"></button>
+        <img class="profile__add-btn" src="./images/Add__Button .svg"></img>
       </section>
+
       <section class="elements">
         <ul class="cards">
           <li class="element">
@@ -34,7 +42,12 @@
             />
             <h2 class="elements__title">
               Карачаевск
-              <img src="./images/Vector_like.png" alt="" class="elements__group"/></h2>
+              <img
+                src="./images/Vector_like.png"
+                alt=""
+                class="elements__group"
+              />
+            </h2>
           </li>
           <li class="element">
             <img src="" alt="" class="elements__group" />
@@ -83,7 +96,9 @@
           </li>
         </ul>
       </section>
-      <footer></footer>
+      <footer class="footer">
+        <div>&#169; 2020 Mesto Russia</div>
+      </footer>
     </div>
   </body>
 </html>

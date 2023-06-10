@@ -8,7 +8,7 @@
     <link rel="stylesheet" href="./style.css" />
     <link rel="stylesheet" href="./vendor/normalize.css" />
     <link rel="stylesheet" href="./fonts/fonts.css" />
-    <script src="script.js"></script>
+
     </head>
 
   <body class="body">
@@ -25,7 +25,7 @@
           </div>
           <div class="profile__heading">
             <h1 class="profile__title">Жак-Ив Кусто</h1>
-            <img class="profile__edit-btn" src="./images/Edit__Button.svg"></img>
+            <img class="profile__edit-btn" src="./images/Edit__Button.svg" onclick="onPopupOpen()"/>
           </div>
           <p class="profile__subtitle">Исследователь океана</p>
         </div>
@@ -59,7 +59,7 @@
             />
             <div class="cards__info">
               <h2 class="cards__title">
-                Карачаевск
+                Марачаевск
               </h2>
               <img
               src="./images/Vector_like.png"
@@ -76,7 +76,7 @@
             />
             <div class="cards__info">
               <h2 class="cards__title">
-                Карачаевск
+                Варачаевск
               </h2>
               <img
               src="./images/Vector_like.png"
@@ -92,7 +92,7 @@
             />
             <div class="cards__info">
               <h2 class="cards__title">
-                Карачаевск
+                Сарачаевск
               </h2>
               <img
               src="./images/Vector_like.png"
@@ -108,7 +108,7 @@
             />
             <div class="cards__info">
               <h2 class="cards__title">
-                Карачаевск
+                Тарачаевск
               </h2>
               <img
               src="./images/Vector_like.png"
@@ -124,7 +124,7 @@
             />
             <div class="cards__info">
               <h2 class="cards__title">
-                Карачаевск
+                Парачаевск
               </h2>
               <img
               src="./images/Vector_like.png"
@@ -141,19 +141,21 @@
 
     <div class="popup popup__edit">
       <div class="popup__container">
-        <div class="popup__close-btn"></div>
+        <div class="popup__close-btn" onclick="onPopupClose()"></div>
         <h3 class="popup__title">Редактирование профиля
         </h3>
-        <form name="form" class="popup__form">
+        <form name="form" class="popup__form" id="1">
           <div class="popup__input-container">
-            <input type="text" class="popup__input-name" required placeholder="Имя">
-            <input type="text" class="popup__input-job" required placeholder="Работа">
+            <input type="text" class="popup__input-name" required placeholder="Имя" name="Name">
+            <input type="text" class="popup__input-job" required placeholder="Работа" name="job">
           </div>
         </form>
         <div class="popup__save-btn">
-          Сохранить
+          <button>Сохранить</button>
         </div>
+
       </div>
     </div>
+    <script src="script.js" ></script>
   </body>
 </html>

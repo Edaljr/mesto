@@ -39,23 +39,26 @@
   height: 120px;
   max-width: 120px;
 }
+
 .profile__logo-wrapper {
   grid-row: span 2;
 }
 
 .profile__info {
+  display: grid;
   align-items: center;
   column-gap: 30px;
-  display: grid;
   grid-template-columns: repeat(2, minmax(min-content, max-content));
   row-gap: 8px;
 }
+
 .profile__heading {
   display: flex;
   align-items: baseline;
   gap: 18px;
   align-self: end;
 }
+
 .profile__title {
   font-style: normal;
   font-weight: 500;
@@ -75,13 +78,22 @@
 .profile__edit-btn {
   cursor: pointer;
   height: 24px;
-  width: 24px;
+  max-width: 24px;
+}
+.profile__edit-btn:hover {
+  opacity: 0.6;
 }
 .profile__add-btn {
   align-self: center;
   max-width: 150px;
   height: 50px;
+  cursor: pointer;
 }
+
+.profile__add-btn:hover {
+  opacity: 0.6;
+}
+
 
 .elements {
   max-width: 880px;

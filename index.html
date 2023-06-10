@@ -1,5 +1,6 @@
 <!DOCTYPE html>
 <html lang="ru">
+<<<<<<< HEAD
 
 <head>
     <meta charset="UTF-8" />
@@ -8,3 +9,164 @@
     <title>Путешествия по России</title>
     <link rel="stylesheet" href="./pages/index.css" />
 </head>
+=======
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <meta name="author" content="DangerEd" />
+    <title>Mesto Russia</title>
+    <link rel="stylesheet" href="./style.css" />
+    <link rel="stylesheet" href="./vendor/normalize.css" />
+    <link rel="stylesheet" href="./fonts/fonts.css" />
+
+    </head>
+
+  <body class="body">
+    <div class="page">
+
+      <header class="header">
+        <img src="./images/Vector.png" alt="Лого Место" class="header__logo" />
+      </header>
+
+      <section class="profile">
+        <div class="profile__info">
+          <div class="profile__logo-wrapper">
+            <img src="./images/image.png" alt="" class="profile__avatar">
+          </div>
+          <div class="profile__heading">
+            <h1 class="profile__title">Жак-Ив Кусто</h1>
+            <img class="profile__edit-btn" src="./images/Edit__Button.svg" onclick="onPopupOpen()"/>
+          </div>
+          <p class="profile__subtitle">Исследователь океана</p>
+        </div>
+        <img class="profile__add-btn" src="./images/Add__Button .svg"></img>
+      </section>
+
+      <section class="cards">
+        <ul class="cards__container">
+          <li class="cards__item">
+            <img
+              src="./images/kirill-pershin-1088404-unsplash.jpg"
+              alt=""
+              class="cards__photo"
+            />
+            <div class="cards__info" >
+              <h2 class="cards__title">
+                Карачаевск
+              </h2>
+              <img
+              src="./images/Vector_like.png"
+              alt=""
+              class="cards__like"
+            /></div>
+
+          </li>
+          <li class="cards__item">
+            <img
+              src="./images/kirill-pershin-1404681-unsplash (1).jpg"
+              alt=""
+              class="cards__photo"
+            />
+            <div class="cards__info">
+              <h2 class="cards__title">
+                Марачаевск
+              </h2>
+              <img
+              src="./images/Vector_like.png"
+              alt=""
+              class="cards__like"
+            /></div>
+
+          </li>
+          <li class="cards__item">
+            <img
+              src="./images/kirill-pershin-1556355-unsplash.jpg"
+              alt=""
+              class="cards__photo"
+            />
+            <div class="cards__info">
+              <h2 class="cards__title">
+                Варачаевск
+              </h2>
+              <img
+              src="./images/Vector_like.png"
+              alt=""
+              class="cards__like"
+            /></div>
+          </li>
+          <li class="cards__item">
+            <img
+              src="./images/kirill-pershin-1556355-unsplash (1).jpg"
+              alt=""
+              class="cards__photo"
+            />
+            <div class="cards__info">
+              <h2 class="cards__title">
+                Сарачаевск
+              </h2>
+              <img
+              src="./images/Vector_like.png"
+              alt=""
+              class="cards__like"
+            /></div>
+          </li>
+          <li class="cards__item">
+            <img
+              src="./images/kirill-pershin-1088404-unsplash (1).jpg"
+              alt=""
+              class="cards__photo"
+            />
+            <div class="cards__info">
+              <h2 class="cards__title">
+                Тарачаевск
+              </h2>
+              <img
+              src="./images/Vector_like.png"
+              alt=""
+              class="cards__like"
+            /></div>
+          </li>
+          <li class="cards__item">
+            <img
+              src="./images/kirill-pershin-1404681-unsplash.jpg"
+              alt=""
+              class="cards__photo"
+            />
+            <div class="cards__info">
+              <h2 class="cards__title">
+                Парачаевск
+              </h2>
+              <img
+              src="./images/Vector_like.png"
+              alt=""
+              class="cards__like"
+            /></div>
+          </li>
+        </ul>
+      </section>
+      <footer class="footer">
+        <div>&#169; 2020 Mesto Russia</div>
+      </footer>
+    </div>
+
+    <div class="popup popup__edit">
+      <div class="popup__container">
+        <div class="popup__close-btn" onclick="onPopupClose()"></div>
+        <h3 class="popup__title">Редактирование профиля
+        </h3>
+        <form name="form" class="popup__form" id="1">
+          <div class="popup__input-container">
+            <input type="text" class="popup__input-name" required placeholder="Имя" name="Name">
+            <input type="text" class="popup__input-job" required placeholder="Работа" name="job">
+          </div>
+        </form>
+        <div class="popup__save-btn">
+          <button>Сохранить</button>
+        </div>
+
+      </div>
+    </div>
+    <script src="script.js" ></script>
+  </body>
+</html>
+>>>>>>> features

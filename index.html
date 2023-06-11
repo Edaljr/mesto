@@ -25,7 +25,7 @@
           </div>
           <div class="profile__heading">
             <h1 class="profile__title">Жак-Ив Кусто</h1>
-            <img class="profile__edit-btn" src="./images/Edit__Button.svg" onclick="onPopupOpen()"/>
+            <img class="profile__edit-btn" src="./images/Edit__Button.svg" onclick="onPopupOpen()" />
           </div>
           <p class="profile__subtitle">Исследователь океана</p>
         </div>
@@ -48,6 +48,7 @@
               src="./images/Vector_like.png"
               alt=""
               class="cards__like"
+
             /></div>
 
           </li>
@@ -142,18 +143,15 @@
     <div class="popup popup__edit">
       <div class="popup__container">
         <div class="popup__close-btn" onclick="onPopupClose()"></div>
-        <h3 class="popup__title">Редактирование профиля
+        <h3 class="popup__title">Редактировать профиля
         </h3>
-        <form name="form" class="popup__form" id="1">
+        <form name="form" class="popup__form" id="1" onclick="handleFormSubmit()">
           <div class="popup__input-container">
             <input type="text" class="popup__input-name" required placeholder="Имя" name="Name">
             <input type="text" class="popup__input-job" required placeholder="Работа" name="job">
           </div>
         </form>
-        <div>
-          <button type="submit" name="button-edit" class="popup__save-btn">Сохранить</button>
-        </div>
-
+          <button type="submit" name="button-edit" class="popup__save-btn" >Сохранить</button>
       </div>
     </div>
     <script src="script.js" ></script>

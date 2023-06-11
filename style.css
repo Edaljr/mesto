@@ -143,15 +143,20 @@
   margin: 0;
 }
 .cards__like {
-  max-width: 22px;
+  border: 0;
+  background-image: url(./images/Vector_like.png);
+  background-repeat: no-repeat;
+  background-size: cover;
+  width: 22px;
   height: 19px;
   cursor: pointer;
+  padding: 0;
 }
 .cards__like:hover {
   opacity: 0.7;
 }
-.cards__like:active {
-  background-color: #000000;
+.cards__like-active {
+  background-image: url(./images/like__active.svg);
 }
 
 
@@ -180,8 +185,6 @@
   transition: visibility 0.5s, opacity 0.5s linear;
   visibility: hidden;
   z-index: 1;
-  box-shadow: 0px 0px 25px rgba(0, 0, 0, 0.15);
-  border-radius: 10px;
   background-color: rgba(0, 0, 0, 0.5);
   opacity: 0;
 }
@@ -197,6 +200,7 @@
   width: 100%;
   box-sizing: border-box;
   position: relative;
+  box-shadow: 0px 0px 25px rgba(0, 0, 0, 0.15);
 }
 .popup__opened {
   opacity: 1;

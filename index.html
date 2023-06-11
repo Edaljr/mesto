@@ -53,7 +53,7 @@
             />
             <div class="cards__info">
               <h2 class="cards__title">Марачаевск</h2>
-              <img src="./images/Vector_like.png" alt="" class="cards__like" />
+              <button class="cards__like" onclick="clickLikeActive()"></button>
             </div>
           </li>
           <li class="cards__item">
@@ -64,7 +64,7 @@
             />
             <div class="cards__info">
               <h2 class="cards__title">Варачаевск</h2>
-              <img src="./images/Vector_like.png" alt="" class="cards__like" />
+              <button class="cards__like" onclick="clickLikeActive()"></button>
             </div>
           </li>
           <li class="cards__item">
@@ -75,7 +75,7 @@
             />
             <div class="cards__info">
               <h2 class="cards__title">Сарачаевск</h2>
-              <img src="./images/Vector_like.png" alt="" class="cards__like" />
+              <button class="cards__like" onclick="clickLikeActive()"></button>
             </div>
           </li>
           <li class="cards__item">
@@ -86,7 +86,7 @@
             />
             <div class="cards__info">
               <h2 class="cards__title">Тарачаевск</h2>
-              <img src="./images/Vector_like.png" alt="" class="cards__like" />
+              <button class="cards__like" onclick="clickLikeActive()"></button>
             </div>
           </li>
           <li class="cards__item">
@@ -97,7 +97,7 @@
             />
             <div class="cards__info">
               <h2 class="cards__title">Парачаевск</h2>
-              <img src="./images/Vector_like.png" alt="" class="cards__like" />
+              <button class="cards__like" onclick="clickLikeActive()"></button>
             </div>
           </li>
         </ul>
@@ -115,7 +115,7 @@
           name="form"
           class="popup__form"
           id="1"
-          onclick="handleFormSubmit()"
+
         >
           <div class="popup__input-container">
             <input
@@ -133,15 +133,16 @@
               name="job"
             />
           </div>
-        </form>
-        <button
+          <button
           type="submit"
           name="button-edit"
           class="popup__save-btn"
-          onclick="saveButton()"
+          onclick="handleFormSubmit()"
         >
           Сохранить
         </button>
+        </form>
+
       </div>
     </div>
     <script src="script.js"></script>

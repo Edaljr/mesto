@@ -4,16 +4,13 @@
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <meta name="author" content="DangerEd" />
-    <title>Mesto Russia</title>
+    <title>Mesto</title>
     <link rel="stylesheet" href="./style.css" />
     <link rel="stylesheet" href="./vendor/normalize.css" />
     <link rel="stylesheet" href="./fonts/fonts.css" />
-
-    </head>
-
+  </head>
   <body class="body">
     <div class="page">
-
       <header class="header">
         <img src="./images/Vector.png" alt="Лого Место" class="header__logo" />
       </header>
@@ -21,15 +18,18 @@
       <section class="profile">
         <div class="profile__info">
           <div class="profile__logo-wrapper">
-            <img src="./images/image.png" alt="" class="profile__avatar">
+            <img src="./images/image.png" alt="" class="profile__avatar" />
           </div>
           <div class="profile__heading">
             <h1 class="profile__title">Жак-Ив Кусто</h1>
-            <img class="profile__edit-btn" src="./images/Edit__Button.svg" onclick="onPopupOpen()" />
+            <button type="button"
+              class="profile__edit-btn"
+              onclick="onPopupOpen()" aria-label="Редактировать"></button>
+
           </div>
           <p class="profile__subtitle">Исследователь океана</p>
         </div>
-        <img class="profile__add-btn" src="./images/Add__Button .svg"></img>
+        <button type="button" class="profile__add-btn" aria-label="Добавить"></button>
       </section>
 
       <section class="cards">
@@ -40,13 +40,10 @@
               alt=""
               class="cards__photo"
             />
-            <div class="cards__info" >
-              <h2 class="cards__title">
-                Карачаевск
-              </h2>
+            <div class="cards__info">
+              <h2 class="cards__title">Карачаевск</h2>
               <button class="cards__like" onclick="clickLikeActive()"></button>
             </div>
-
           </li>
           <li class="cards__item">
             <img
@@ -55,15 +52,9 @@
               class="cards__photo"
             />
             <div class="cards__info">
-              <h2 class="cards__title">
-                Марачаевск
-              </h2>
-              <img
-              src="./images/Vector_like.png"
-              alt=""
-              class="cards__like"
-            /></div>
-
+              <h2 class="cards__title">Марачаевск</h2>
+              <img src="./images/Vector_like.png" alt="" class="cards__like" />
+            </div>
           </li>
           <li class="cards__item">
             <img
@@ -72,14 +63,9 @@
               class="cards__photo"
             />
             <div class="cards__info">
-              <h2 class="cards__title">
-                Варачаевск
-              </h2>
-              <img
-              src="./images/Vector_like.png"
-              alt=""
-              class="cards__like"
-            /></div>
+              <h2 class="cards__title">Варачаевск</h2>
+              <img src="./images/Vector_like.png" alt="" class="cards__like" />
+            </div>
           </li>
           <li class="cards__item">
             <img
@@ -88,14 +74,9 @@
               class="cards__photo"
             />
             <div class="cards__info">
-              <h2 class="cards__title">
-                Сарачаевск
-              </h2>
-              <img
-              src="./images/Vector_like.png"
-              alt=""
-              class="cards__like"
-            /></div>
+              <h2 class="cards__title">Сарачаевск</h2>
+              <img src="./images/Vector_like.png" alt="" class="cards__like" />
+            </div>
           </li>
           <li class="cards__item">
             <img
@@ -104,14 +85,9 @@
               class="cards__photo"
             />
             <div class="cards__info">
-              <h2 class="cards__title">
-                Тарачаевск
-              </h2>
-              <img
-              src="./images/Vector_like.png"
-              alt=""
-              class="cards__like"
-            /></div>
+              <h2 class="cards__title">Тарачаевск</h2>
+              <img src="./images/Vector_like.png" alt="" class="cards__like" />
+            </div>
           </li>
           <li class="cards__item">
             <img
@@ -120,14 +96,9 @@
               class="cards__photo"
             />
             <div class="cards__info">
-              <h2 class="cards__title">
-                Парачаевск
-              </h2>
-              <img
-              src="./images/Vector_like.png"
-              alt=""
-              class="cards__like"
-            /></div>
+              <h2 class="cards__title">Парачаевск</h2>
+              <img src="./images/Vector_like.png" alt="" class="cards__like" />
+            </div>
           </li>
         </ul>
       </section>
@@ -139,17 +110,40 @@
     <div class="popup popup__edit">
       <div class="popup__container">
         <div class="popup__close-btn" onclick="onPopupClose()"></div>
-        <h3 class="popup__title">Редактировать профиля
-        </h3>
-        <form name="form" class="popup__form" id="1" onclick="handleFormSubmit()">
+        <h3 class="popup__title">Редактировать профиля</h3>
+        <form
+          name="form"
+          class="popup__form"
+          id="1"
+          onclick="handleFormSubmit()"
+        >
           <div class="popup__input-container">
-            <input type="text" class="popup__input-name" required placeholder="Имя" name="Name">
-            <input type="text" class="popup__input-job" required placeholder="Работа" name="job">
+            <input
+              type="text"
+              class="popup__input-name"
+              required
+              placeholder="Имя"
+              name="Name"
+            />
+            <input
+              type="text"
+              class="popup__input-job"
+              required
+              placeholder="Работа"
+              name="job"
+            />
           </div>
         </form>
-          <button type="submit" name="button-edit" class="popup__save-btn" >Сохранить</button>
+        <button
+          type="submit"
+          name="button-edit"
+          class="popup__save-btn"
+          onclick="saveButton()"
+        >
+          Сохранить
+        </button>
       </div>
     </div>
-    <script src="script.js" ></script>
+    <script src="script.js"></script>
   </body>
 </html>

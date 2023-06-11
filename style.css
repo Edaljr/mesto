@@ -22,7 +22,6 @@
 .header__logo {
   color: #ffffff;
   max-width: 142px;
-
 }
 
 .profile {
@@ -65,6 +64,7 @@
   font-size: 42px;
   line-height: 48px;
   margin: 0;
+ 
 }
 
 .profile__subtitle {
@@ -76,18 +76,36 @@
   align-self: start;
 }
 .profile__edit-btn {
+  padding: 0;
+  border: 1px solid #FFFFFF;
   cursor: pointer;
   height: 24px;
   max-width: 24px;
+  background-image: url(./images/Edit__Button.svg);
+  background-repeat: no-repeat;
+  background-position: 50%;
+  background-size: 24px;
+  background-color: black;
+  width: 100%;
+  align-self: center;
 }
 .profile__edit-btn:hover {
   opacity: 0.6;
 }
 .profile__add-btn {
+  padding: 0;
   align-self: center;
   max-width: 150px;
   height: 50px;
   cursor: pointer;
+  border: 2px solid #ffffff;
+  border-radius: 2px;
+  width: 100%;
+  background-color: black;
+  background-image: url(./images/plus.svg);
+  background-repeat: no-repeat;
+  background-position: 50%;
+  background-size: 22px;
 }
 
 .profile__add-btn:hover {
@@ -141,6 +159,9 @@
   font-size: 24px;
   line-height: 29px;
   margin: 0;
+  text-overflow: ellipsis;
+  white-space: nowrap;
+  overflow: hidden;
 }
 .cards__like {
   border: 0;
@@ -158,7 +179,6 @@
 .cards__like-active {
   background-image: url(./images/like__active.svg);
 }
-
 
 .footer {
   max-width: 880px;
@@ -299,7 +319,7 @@
 
 @media screen and (max-width: 768px) {
   .profile__logo-wrapper {
-  text-align: center;
+    text-align: center;
   }
 }
 @media screen and (max-width: 768px) {
@@ -314,8 +334,6 @@
   .profile {
     flex-direction: column;
     max-width: 282px;
-    padding-left: 20px;
-    padding-right: 20px;
   }
 }
 @media screen and (max-width: 768px) {
@@ -352,17 +370,22 @@
     max-width: 18px;
   }
 }
+@media screen and (max-width: 768px) {
+  .profile__add-btn {
+    background-size: 16px;
+  }
+}
 
 @media screen and (max-width: 768px) {
   .profile__heading {
-   gap: 10px;
+    gap: 10px;
   }
 }
 @media screen and (max-width: 768px) {
   .cards {
-   padding-left: 20px;
-   padding-right: 20px;
-   margin-top: 30px;
+    padding-left: 20px;
+    padding-right: 20px;
+    margin-top: 30px;
   }
 }
 @media screen and (max-width: 768px) {
@@ -370,8 +393,8 @@
     padding-top: 48px;
     padding-bottom: 36px;
     padding-left: 20px;
-font-size: 14px;
-line-height: 17px;
+    font-size: 14px;
+    line-height: 17px;
   }
 }
 @media screen and (max-width: 768px) {
@@ -381,14 +404,13 @@ line-height: 17px;
     padding-left: 22px;
     padding-top: 25px;
     padding-bottom: 25px;
-
   }
 }
 @media screen and (max-width: 768px) {
   .popup__title {
-font-size: 18px;
-line-height: 22px;
-margin-bottom: 75px;
+    font-size: 18px;
+    line-height: 22px;
+    margin-bottom: 75px;
   }
 }
 @media screen and (max-width: 768px) {

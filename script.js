@@ -4,7 +4,6 @@ let jobInput = document.querySelector(".popup__input-job");
 let popup = document.querySelector(".popup");
 let profileTitle = document.querySelector(".profile__title");
 let profileSubtitle = document.querySelector(".profile__subtitle");
-
 let saveButton = document.querySelector(".popup-save-btn");
 
 function onPopupOpen() {
@@ -36,7 +35,5 @@ function clickLikeActive() {
     clickLike.classList.add("cards__like-active");
   }
 }
-
-
 
 formElement.addEventListener("submit", handleFormSubmit);

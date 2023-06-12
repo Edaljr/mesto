@@ -1,0 +1,9 @@
+.cards__container {
+  display: flex;
+  column-gap: 17px;
+  flex-wrap: wrap;
+  list-style-type: none;
+  padding: 0;
+  row-gap: 20px;
+  margin: 0;
+}

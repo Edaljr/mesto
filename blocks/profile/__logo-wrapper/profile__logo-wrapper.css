@@ -1,0 +1,8 @@
+.profile__logo-wrapper {
+  grid-row: span 2;
+}
+@media screen and (max-width: 768px) {
+  .profile__logo-wrapper {
+    text-align: center;
+  }
+}

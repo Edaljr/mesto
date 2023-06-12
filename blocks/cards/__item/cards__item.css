@@ -1,0 +1,7 @@
+.cards__item {
+  max-width: 282px;
+  width: 100%;
+  margin: 0;
+  background: #ffffff;
+  border-radius: 10px;
+}

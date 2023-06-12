@@ -9,7 +9,7 @@
   .profile__info {
     grid-template-columns: repeat(1, minmax(min-content, max-content));
     row-gap: 14px;
-    justify-content: center;
+    justify-items: center;
     margin-bottom: 36px;
   }
 }

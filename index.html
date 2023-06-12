@@ -21,7 +21,6 @@
             <button
               type="button"
               class="profile__edit-btn"
-              onclick="onPopupOpen()"
               aria-label="Редактировать"
             ></button>
           </div>
@@ -112,20 +111,20 @@
 
     <div class="popup">
       <div class="popup__container">
-        <button class="popup__close-btn" type="button" onclick="onPopupClose()"></button>
+        <button class="popup__close-btn" type="button"></button>
         <h3 class="popup__title">Редактировать профиля</h3>
         <form name="form" class="popup__form" id="1">
           <fieldset class="popup__input-container">
             <input
               type="text"
-              class="popup__input-name"
+              class="popup__input"
               required
               placeholder="Имя"
-              name="Name"
+              name="name"
             />
             <input
               type="text"
-              class="popup__input-job"
+              class="popup__input"
               required
               placeholder="Работа"
               name="job"
@@ -135,13 +134,12 @@
             type="submit"
             name="button-edit"
             class="popup__save-btn"
-            onclick="handleFormSubmit()"
           >
             Сохранить
           </button>
         </form>
       </div>
     </div>
-    <script src="script.js"></script>
+    <script src="./script/script.js"></script>
   </body>
 </html>

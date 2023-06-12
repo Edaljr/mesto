@@ -10,11 +10,16 @@
   line-height: 22px;
   color: #545454;
 }
+@media screen and (max-width: 1024px) {
+  .footer {
+    padding-left: 19px;
+    padding-right: 19px;
+  }
+}
 @media screen and (max-width: 768px) {
   .footer {
     padding-top: 48px;
     padding-bottom: 36px;
-    padding-left: 20px;
     font-size: 14px;
     line-height: 17px;
   }

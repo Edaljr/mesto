@@ -11,11 +11,13 @@
   max-width: 358px;
   width: 100%;
   padding: 0;
+  margin-top: 48px;
 }
 .popup__save-btn:hover {
   opacity: 0.8;
   transition: opacity 0.5s;
 }
+
 @media screen and (max-width: 768px) {
   .popup__save-btn {
     height: 48px;

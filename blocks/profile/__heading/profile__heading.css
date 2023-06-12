@@ -9,5 +9,7 @@
   .profile__heading {
     gap: 10px;
     min-width: 282px;
+    justify-content: center;
+    padding-top: 12px;
   }
 }

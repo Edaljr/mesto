@@ -10,14 +10,12 @@
   <body class="body">
     <div class="page">
       <header class="header">
-        <img src="./images/Vector.png" alt="Лого Место" class="header__logo" />
+        <img src="./images/Vector.svg" alt="Лого Место" class="header__logo" />
       </header>
-
+      <main class="content">
       <section class="profile">
         <div class="profile__info">
-          <div class="profile__logo-wrapper">
-            <img src="./images/image.png" alt="" class="profile__avatar" />
-          </div>
+            <img src="./images/image.png" alt="Фото Профиля" class="profile__avatar" />
           <div class="profile__heading">
             <h1 class="profile__title">Жак-Ив Кусто</h1>
             <button
@@ -46,7 +44,7 @@
             />
             <div class="cards__info">
               <h2 class="cards__title">Карачаевск</h2>
-              <button class="cards__like" onclick="clickLikeActive()"></button>
+              <button class="cards__like" type="button"></button>
             </div>
           </li>
           <li class="cards__item">
@@ -57,7 +55,7 @@
             />
             <div class="cards__info">
               <h2 class="cards__title">Марачаевск</h2>
-              <button class="cards__like" onclick="clickLikeActive()"></button>
+              <button class="cards__like" type="button"></button>
             </div>
           </li>
           <li class="cards__item">
@@ -68,7 +66,7 @@
             />
             <div class="cards__info">
               <h2 class="cards__title">Варачаевск</h2>
-              <button class="cards__like" onclick="clickLikeActive()"></button>
+              <button class="cards__like" type="button"></button>
             </div>
           </li>
           <li class="cards__item">
@@ -79,7 +77,7 @@
             />
             <div class="cards__info">
               <h2 class="cards__title">Сарачаевск</h2>
-              <button class="cards__like" onclick="clickLikeActive()"></button>
+              <button class="cards__like" type="button"></button>
             </div>
           </li>
           <li class="cards__item">
@@ -90,7 +88,7 @@
             />
             <div class="cards__info">
               <h2 class="cards__title">Тарачаевск</h2>
-              <button class="cards__like" onclick="clickLikeActive()"></button>
+              <button class="cards__like" type="button"></button>
             </div>
           </li>
           <li class="cards__item">
@@ -101,22 +99,23 @@
             />
             <div class="cards__info">
               <h2 class="cards__title">Парачаевск</h2>
-              <button class="cards__like" onclick="clickLikeActive()"></button>
+              <button class="cards__like" type="button"></button>
             </div>
           </li>
         </ul>
       </section>
       <footer class="footer">
-        <div>&#169; 2020 Mesto Russia</div>
+        <p>&#169; 2020 Mesto Russia</p>
+      </main>
       </footer>
     </div>
 
     <div class="popup">
       <div class="popup__container">
-        <div class="popup__close-btn" onclick="onPopupClose()"></div>
+        <button class="popup__close-btn" type="button" onclick="onPopupClose()"></button>
         <h3 class="popup__title">Редактировать профиля</h3>
         <form name="form" class="popup__form" id="1">
-          <div class="popup__input-container">
+          <fieldset class="popup__input-container">
             <input
               type="text"
               class="popup__input-name"
@@ -131,7 +130,7 @@
               placeholder="Работа"
               name="job"
             />
-          </div>
+          </fieldset>
           <button
             type="submit"
             name="button-edit"

@@ -1,6 +1,6 @@
 .popup__save-btn {
   background-color: #000000;
-  color: #fff;
+  color: #ffffff;
   height: 50px;
   border-radius: 2px;
   font-size: 18px;
@@ -16,3 +16,15 @@
   opacity: 0.8;
   transition: opacity 0.5s;
 }
+@media screen and (max-width: 768px) {
+  .popup__save-btn {
+    height: 48px;
+  }
+}
+@media screen and (max-width: 320px) {
+  .popup__save-btn {
+    font-size: 14px;
+  line-height: 17px;
+  }
+}
+

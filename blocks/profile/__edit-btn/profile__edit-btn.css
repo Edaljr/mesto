@@ -8,8 +8,8 @@
   background-repeat: no-repeat;
   background-position: 50%;
   background-size: 24px;
-  background-color: #000000;
-  /* не знаю как реализовать( подскажите плз */
+  background-color: transparent;
+  /* Спасибо =) */
   width: 100%;
 }
 .profile__edit-btn:hover {

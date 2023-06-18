@@ -38,74 +38,7 @@
         </section>
 
         <section class="cards">
-          <ul class="cards__container">
-            <li class="cards__item">
-              <img
-                src="./images/kirill-pershin-1088404-unsplash.jpg"
-                alt="Картинка Карачаевск"
-                class="cards__photo"
-              />
-              <div class="cards__info">
-                <h2 class="cards__title">Карачаевск</h2>
-                <button class="cards__like" type="button"></button>
-              </div>
-            </li>
-            <li class="cards__item">
-              <img
-                src="./images/kirill-pershin-1404681-unsplash1.jpg"
-                alt="Картинка Сарачаевск"
-                class="cards__photo"
-              />
-              <div class="cards__info">
-                <h2 class="cards__title">Марачаевск</h2>
-                <button class="cards__like" type="button"></button>
-              </div>
-            </li>
-            <li class="cards__item">
-              <img
-                src="./images/kirill-pershin-1556355-unsplash.jpg"
-                alt="Картинка Варачаевск"
-                class="cards__photo"
-              />
-              <div class="cards__info">
-                <h2 class="cards__title">Варачаевск</h2>
-                <button class="cards__like" type="button"></button>
-              </div>
-            </li>
-            <li class="cards__item">
-              <img
-                src="./images/kirill-pershin-1556355-unsplash1.jpg"
-                alt="Картинка Марачаевск"
-                class="cards__photo"
-              />
-              <div class="cards__info">
-                <h2 class="cards__title">Сарачаевск</h2>
-                <button class="cards__like" type="button"></button>
-              </div>
-            </li>
-            <li class="cards__item">
-              <img
-                src="./images/kirill-pershin-1088404-unsplash1.jpg"
-                alt="Картинка Парачаевск"
-                class="cards__photo"
-              />
-              <div class="cards__info">
-                <h2 class="cards__title">Тарачаевск</h2>
-                <button class="cards__like" type="button"></button>
-              </div>
-            </li>
-            <li class="cards__item">
-              <img
-                src="./images/kirill-pershin-1404681-unsplash.jpg"
-                alt="Картинка Тарачаевск"
-                class="cards__photo"
-              />
-              <div class="cards__info">
-                <h2 class="cards__title">Парачаевск</h2>
-                <button class="cards__like" type="button"></button>
-              </div>
-            </li>
-          </ul>
+          <ul class="cards__container"></ul>
         </section>
       </main>
       <footer class="footer">
@@ -114,9 +47,9 @@
 
       <div class="popup">
         <div class="popup__container">
-          <button class="popup__close-btn" type="button"></button>
+          <button class="popup__close-btn" type="button" id="edit"></button>
           <h3 class="popup__title">Редактировать профиля</h3>
-          <form name="form" class="popup__form" id="1">
+          <form name="form" class="popup__form" id="editForm">
             <fieldset class="popup__input-container">
               <input
                 type="text"
@@ -139,7 +72,59 @@
           </form>
         </div>
       </div>
+
+      <div class="popup popup__add-btn">
+        <div class="popup__container">
+          <button class="popup__close-btn" type="button" id="add"></button>
+          <h3 class="popup__title">Новое Место</h3>
+          <form name="form" class="popup__form" id="addForm">
+            <fieldset class="popup__input-container">
+              <input
+                type="text"
+                class="popup__input"
+                required
+                placeholder="Название"
+                name="title"
+              />
+              <input
+                type="text"
+                class="popup__input"
+                required
+                placeholder="Ссылка на картинку"
+                name="link"
+              />
+            </fieldset>
+            <button type="submit" name="button-edit" class="popup__save-btn">
+              Создать
+            </button>
+          </form>
+        </div>
+      </div>
+
+      <div class="popup popup__image-scale">
+        <div class="popup_container__image-scale">
+          <button class="popup__close-btn" type="button" id="add"></button>
+            <img src="" alt="" class="popup__image">
+            <p class="popup__subtitle"></p>
+            </button>
+          </form>
+        </div>
+      </div>
+
+      <template id="card">
+        <li class="cards__item">
+          <img
+            class="cards__photo"
+          />
+          <div class="cards__info">
+            <h2 class="cards__title"></h2>
+            <button class="cards__like" type="button"></button>
+          </div>
+          <button class="cards__btn-remove" type="button" id=""></button>
+        </li>
+
+      </template>
     </div>
-    <script src="./script/script.js"></script>
+    <script src="./script/script.js" defer></script>
   </body>
 </html>

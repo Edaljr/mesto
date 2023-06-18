@@ -1,0 +1,15 @@
+.cards__btn-remove {
+  background-image:url(../../../images/trash__icon.svg) ;
+  position: absolute;
+  top: 20px;
+  right: 20px;
+  background-color: transparent;
+  border: 0;
+  width: 18px;
+  height: 20px;
+  cursor: pointer;
+}
+.cards__btn-remove:hover {
+  opacity: 0.6;
+  transition: opacity 0.6s;
+}

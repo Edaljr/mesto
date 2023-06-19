@@ -45,9 +45,9 @@
         <p class="footer__copyright">&#169; 2020 Mesto Russia</p>
       </footer>
 
-      <div class="popup">
+      <div class="popup popup_edit">
         <div class="popup__container">
-          <button class="popup__close-btn" type="button" id="edit"></button>
+          <button class="popup__close-btn" type="button"></button>
           <h3 class="popup__title">Редактировать профиля</h3>
           <form name="form" class="popup__form" id="editForm">
             <fieldset class="popup__input-container">
@@ -73,7 +73,7 @@
         </div>
       </div>
 
-      <div class="popup popup__add-btn">
+      <div class="popup popup_add">
         <div class="popup__container">
           <button class="popup__close-btn" type="button" id="add"></button>
           <h3 class="popup__title">Новое Место</h3>
@@ -101,28 +101,23 @@
         </div>
       </div>
 
-      <div class="popup popup__image-scale">
-        <div class="popup_container__image-scale">
-          <button class="popup__close-btn" type="button" id="add"></button>
-            <img src="" alt="" class="popup__image">
-            <p class="popup__subtitle"></p>
-            </button>
-          </form>
+      <div class="popup popup_image-scale">
+        <div class="popup__container popup__container_image-scale">
+          <button class="popup__close-btn" type="button" id="image"></button>
+          <img src="" alt="" class="popup__image" />
+          <p class="popup__subtitle"></p>
         </div>
       </div>
 
       <template id="card">
         <li class="cards__item">
-          <img
-            class="cards__photo"
-          />
+          <img class="cards__photo" />
           <div class="cards__info">
             <h2 class="cards__title"></h2>
             <button class="cards__like" type="button"></button>
           </div>
           <button class="cards__btn-remove" type="button" id=""></button>
         </li>
-
       </template>
     </div>
     <script src="./script/script.js" defer></script>

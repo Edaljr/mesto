@@ -3,3 +3,8 @@
   max-width: 75vw;
   width: 100%;
 }
+.popup__image-scale--show {
+visibility: visible;
+opacity: 1;
+}
+

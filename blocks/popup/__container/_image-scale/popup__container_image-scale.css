@@ -1,0 +1,9 @@
+.popup__container_image-scale{
+  display: flex;
+  flex-direction: column;
+  background-color: transparent;
+  border-radius: 0;
+  max-width: fit-content;
+  padding: 0;
+  position: relative;
+}

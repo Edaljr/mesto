@@ -19,6 +19,7 @@ const createCard = (name, imgLink) => {
   const cardElement = card.querySelector(".cards__item").cloneNode(true);
   cardElement.querySelector(".cards__photo").src = imgLink;
   cardElement.querySelector(".cards__title").textContent = name;
+  cardElement.querySelector(".cards__photo").alt = name;
   const likeButton = cardElement.querySelector(".cards__like");
   const deleteButton = cardElement.querySelector(".cards__btn-remove");
   const cardImage = cardElement.querySelector(".cards__photo");

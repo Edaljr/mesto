@@ -2,8 +2,8 @@ const editFormElement = document.querySelector("#editForm");
 const addFormElement = document.querySelector("#addForm");
 const nameInput = document.querySelector('input[name="name"]');
 const jobInput = document.querySelector('input[name="job"]');
-const popupTitleInput = document.querySelector('input[name="title"]');
-const popupLinkInput = document.querySelector('input[name="link"]');
+const inputNameFormAddNewCard = document.querySelector('input[name="title"]');
+const inputLinkFormAddNewCard = document.querySelector('input[name="link"]');
 const profileTitle = document.querySelector(".profile__title");
 const profileSubtitle = document.querySelector(".profile__subtitle");
 const profileEditBtn = document.querySelector(".profile__edit-btn");
@@ -46,7 +46,6 @@ const deleteCard = (card) => {
   card.remove();
 }
 
-
 //Popup open
 const onPopupOpen = (popupName, imgLink) => {
   if (popupName === "add") {
@@ -73,8 +72,8 @@ function setEditFormTextValue() {
 }
 
 function setCardsTextValue() {
-  popupTitleInput.value = popupTitleInput.textContent;
-  popupLinkInput.value = popupLinkInput.textContent;
+  inputNameFormAddNewCard.value = inputNameFormAddNewCard.textContent;
+  inputLinkFormAddNewCard.value = inputLinkFormAddNewCard.textContent;
   }
 
 
@@ -101,7 +100,7 @@ const handleEditFormSubmit = (evt) => {
 //submit dobavleniya cards
 const handleAddFormSubmit = (evt) => {
   evt.preventDefault();
-  const newCard = createCard(popupTitleInput.value, popupLinkInput.value);
+  const newCard = createCard(inputNameFormAddNewCard.value, inputLinkFormAddNewCard.value);
   renderCard(newCard, cardsContainer)
   onPopupClose();
 };

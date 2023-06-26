@@ -47,24 +47,16 @@ const deleteCard = (card) => {
 }
 
 //Popup open
-const onPopupOpen = (popupName, imgLink) => {
-  if (popupName === "add") {
-    popupAdd.classList.add("popup_opened");
-  } else if (popupName === "preview") {
-    previewPopup.classList.add("popup_opened");
-    previewPopup.querySelector(".popup__image").src = imgLink;
-  } else {
-    popupEdit.classList.add("popup_opened");
-  }
-};
+const onPopupOpen = (modalWindow) => {
+    modalWindow.classList.add("popup_opened");}
+
+  //   //
 
 //Popup close
 function onPopupClose() {
-  const popupOpened = document.querySelector(".popup_opened");
-  if (popupOpened) {
-    popupOpened.classList.remove("popup_opened");
+  const popupOpened = document.querySelector('.popup_opened')
+  popupOpened.classList.remove("popup_opened");
   }
-}
 
 function setEditFormTextValue() {
   nameInput.value = profileTitle.textContent.trim();
@@ -85,7 +77,8 @@ window.addEventListener("load", (event) => {
   }
   const closeBtn = document.querySelectorAll(".popup__close-btn");
   closeBtn.forEach((button) => {
-    button.addEventListener("click", onPopupClose);
+    button.addEventListener("click", () =>
+    onPopupClose());
   })
 });
 
@@ -94,7 +87,7 @@ const handleEditFormSubmit = (evt) => {
   evt.preventDefault();
   profileTitle.textContent = nameInput.value;
   profileSubtitle.textContent = jobInput.value;
-  onPopupClose();
+  onPopupClose(popupEdit);
 };
 
 //submit dobavleniya cards
@@ -102,17 +95,18 @@ const handleAddFormSubmit = (evt) => {
   evt.preventDefault();
   const newCard = createCard(inputNameFormAddNewCard.value, inputLinkFormAddNewCard.value);
   renderCard(newCard, cardsContainer)
-  onPopupClose();
+  onPopupClose(popupAdd);
 };
 
-const handlePreviewImage = (data, evt) => {
+const handlePreviewImage = (imgLink, evt) => {
   evt.preventDefault();
-  onPopupOpen("preview", data)
+  previewPopup.querySelector(".popup__image").src = imgLink;
+  onPopupOpen(previewPopup)
 };
 
 profileEditBtn.addEventListener("click",  (evt) => {
   evt.preventDefault();
-  onPopupOpen();
+  onPopupOpen(popupEdit);
   setEditFormTextValue();
 });
 
@@ -122,7 +116,7 @@ addFormElement.addEventListener("submit", handleAddFormSubmit);
 
 profileAddBtn.addEventListener("click",  (evt) => {
   evt.preventDefault();
-  onPopupOpen("add");
+  onPopupOpen(popupAdd);
   setCardsTextValue();
 });
 

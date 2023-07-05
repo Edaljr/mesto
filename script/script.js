@@ -1,5 +1,5 @@
-const editFormElement = document.querySelector("#editForm");
-const addFormElement = document.querySelector("#addForm");
+const editFormElement = document.querySelector('form[name="editForm"]');
+const addFormElement = document.querySelector('form[name="addForm"]');
 const nameInput = document.querySelector('input[name="name"]');
 const jobInput = document.querySelector('input[name="job"]');
 const inputNameFormAddNewCard = document.querySelector('input[name="title"]');
@@ -18,6 +18,8 @@ const previewPopupSubtitle = document.querySelector(".popup__subtitle");
 const closeBtnPreview = previewPopup.querySelector(".popup__close-btn");
 const closeBtnAdd = popupAdd.querySelector(".popup__close-btn");
 const closeBtnEdit = popupEdit.querySelector(".popup__close-btn");
+const popupSaveAddBtn = popupAdd.querySelector('.popup__btn-add')
+
 
 //Create Card
 const createCard = (name, imgLink) => {
@@ -116,20 +118,30 @@ profileEditBtn.addEventListener("click", (evt) => {
 
 editFormElement.addEventListener("submit", handleEditFormSubmit);
 
+// popupAdd.addEventListener('keypress', function() {
+//   onPopupClose(popupAdd)
+//   console.log(111);
+// });
+
+
+// function keyHandler(evt) {
+//   if (evt.key === "escape") {
+//     onPopupClose(popupAdd);
+//   }
+// }
+// popupAdd.addEventListener("keypress", keyHandler);
+
+
 addFormElement.addEventListener("submit", handleAddFormSubmit);
 
 profileAddBtn.addEventListener("click", (evt) => {
   evt.preventDefault();
   onPopupOpen(popupAdd);
   setCardsTextValue();
+  disabledButton(popupSaveAddBtn);
 });
 
 closeBtnPreview.addEventListener("click", () => onPopupClose(previewPopup));
 closeBtnAdd.addEventListener("click", () => onPopupClose(popupAdd));
 closeBtnEdit.addEventListener("click", () => onPopupClose(popupEdit));
 
-// Решением для крестика было глянуть самое первое твоё замечание, надеюсь правильно понял ))
-// Обработчик на крестик будет добавляться итеративно.
-// Открыли 5 раз один и тот же попап - будет добавлено 5 обработчиков,
-// это не верно. В проекте 3 попапа, достаточно слушатель закрытия попапа на крестик
-// добавить один раз на каждый попап в глобальном скоупе.

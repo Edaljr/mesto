@@ -18,8 +18,7 @@ const previewPopupSubtitle = document.querySelector(".popup__subtitle");
 const closeBtnPreview = previewPopup.querySelector(".popup__close-btn");
 const closeBtnAdd = popupAdd.querySelector(".popup__close-btn");
 const closeBtnEdit = popupEdit.querySelector(".popup__close-btn");
-const popupSaveAddBtn = popupAdd.querySelector('.popup__btn-add')
-
+const popupSaveAddBtn = popupAdd.querySelector(".popup__btn-add");
 
 //Create Card
 const createCard = (name, imgLink) => {
@@ -56,11 +55,15 @@ const deleteCard = (card) => {
 //Popup open
 const onPopupOpen = (modalWindow) => {
   modalWindow.classList.add("popup_opened");
+  keyHandler();
+  overlayClickHandler();
 };
 
 //Popup close
 const onPopupClose = (modalWindow) => {
   modalWindow.classList.remove("popup_opened");
+  document.removeEventListener("keydown", keyDownHandler, true);
+  document.removeEventListener("click", overlayClickCallback, true);
 };
 
 function setEditFormTextValue() {
@@ -103,6 +106,7 @@ const handleAddFormSubmit = (evt) => {
   onPopupClose(popupAdd);
 };
 
+//Click otkritie Image
 const handlePreviewImage = (imgLink, name) => {
   imageElement.src = imgLink;
   imageElement.alt = `Изображение ${name}`;
@@ -118,19 +122,29 @@ profileEditBtn.addEventListener("click", (evt) => {
 
 editFormElement.addEventListener("submit", handleEditFormSubmit);
 
-// popupAdd.addEventListener('keypress', function() {
-//   onPopupClose(popupAdd)
-//   console.log(111);
-// });
+// Click zakritie Overlay
+function overlayClickHandler() {
+  document.addEventListener("click", overlayClickCallback, true);
+}
+function overlayClickCallback(evt) {
+  const openedPopup = document.querySelector(".popup_opened");
+  const openedPopupContainer = openedPopup.querySelector(".popup__container");
+  const isClickInside = openedPopupContainer.contains(evt.target);
+  if (!isClickInside) {
+    onPopupClose(openedPopup);
+  }
+}
 
-
-// function keyHandler(evt) {
-//   if (evt.key === "escape") {
-//     onPopupClose(popupAdd);
-//   }
-// }
-// popupAdd.addEventListener("keypress", keyHandler);
-
+//Keydown Esc zakritie popupov
+function keyHandler() {
+  document.addEventListener("keydown", keyDownHandler, true);
+}
+function keyDownHandler(evt) {
+  const openedPopup = document.querySelector(".popup_opened");
+  if (evt.key === "Escape") {
+    onPopupClose(openedPopup);
+  }
+}
 
 addFormElement.addEventListener("submit", handleAddFormSubmit);
 
@@ -144,4 +158,3 @@ profileAddBtn.addEventListener("click", (evt) => {
 closeBtnPreview.addEventListener("click", () => onPopupClose(previewPopup));
 closeBtnAdd.addEventListener("click", () => onPopupClose(popupAdd));
 closeBtnEdit.addEventListener("click", () => onPopupClose(popupEdit));
-

@@ -1,54 +1,63 @@
+const config ={
+  formSelector: '.popup__form',
+  inputSelector: '.popup__input',
+  submitButtonSelector: '.popup__button',
+  inactiveButtonClass: 'popup__button_disabled',
+  inputErrorClass: 'popup__input_type_error',
+}
+
 //pokazat' text oshibki
-function showError(inputElement, errorElement) {
-  inputElement.classList.add("popup__input_type_error");
+function showError(inputElement, errorElement, config) {
+  inputElement.classList.add(config.inputErrorClass);
   errorElement.textContent = inputElement.validationMessage;
 }
 
 //spryatat' text oshibki
-function hideError(inputElement, errorElement) {
-  inputElement.classList.remove("popup__input_type_error");
+function hideError(inputElement, errorElement, config) {
+  inputElement.classList.remove(config.inputErrorClass);
   errorElement.textContent = inputElement.validationMessage;
 }
 
 //proverka Validnosti inputov
-function checkInputValidity(inputElement, formElement) {
+function checkInputValidity(inputElement, formElement, config) {
   const isInputValid = inputElement.validity.valid;
   const errorElement = formElement.querySelector(`#${inputElement.name}-error`);
   if (!isInputValid) {
-    showError(inputElement, errorElement);
+    showError(inputElement, errorElement, config);
   } else {
-    hideError(inputElement, errorElement);
+    hideError(inputElement, errorElement, config);
   }
 }
 
 //function knopki disabled
-function disabledButton(buttonElement) {
+function disabledButton(buttonElement,config) {
   buttonElement.disabled = "disabled";
-  buttonElement.classList.add("popup__button_disabled");
+  buttonElement.classList.add(config.inactiveButtonClass);
 }
 //function knopki enabled
-function enabledButton(buttonElement) {
+function enabledButton(buttonElement,config) {
   buttonElement.disabled = false;
-  buttonElement.classList.remove("popup__button_disabled");
+  buttonElement.classList.remove(config.inactiveButtonClass);
 }
 
 //Sostoyanie knopki disabled/enabled
-function toogleButtonState(buttonElement, isActive) {
+function toogleButtonState(buttonElement, isActive, config) {
   if (!isActive) {
-    disabledButton(buttonElement);
+    disabledButton(buttonElement, config);
   } else {
-    enabledButton(buttonElement);
+    enabledButton(buttonElement, config);
   }
 }
 
 //Poisk Inputov, knopki / disable knopki /obrabotchik na inputi
-function setEventListener(formElement) {
-  const inputList = formElement.querySelectorAll(".popup__input");
-  const submitButtonElement = formElement.querySelector(".popup__button");
+function setEventListener(formElement, config) {
+  const inputList = formElement.querySelectorAll(config.inputSelector);
+  const submitButtonElement = formElement.querySelector(config.submitButtonSelector);
+
   [...inputList].forEach(function (inputElement) {
     inputElement.addEventListener("input", function () {
-      toogleButtonState(submitButtonElement, formElement.checkValidity());
-      checkInputValidity(inputElement, formElement);
+      toogleButtonState(submitButtonElement, formElement.checkValidity(), config);
+      checkInputValidity(inputElement, formElement, config);
     });
   });
   formElement.addEventListener("submit", (evt) => {
@@ -58,12 +67,13 @@ function setEventListener(formElement) {
 }
 
 //Poisk form i veshaem obrabotchik
-function enableValidation() {
-  const formList = document.querySelectorAll(".popup__form");
+function enableValidation(config) {
+  const formList = document.querySelectorAll(config.formSelector);
   [...formList].forEach(function (formElement) {
-    setEventListener(formElement);
+    setEventListener(formElement, config);
   });
 }
 
-enableValidation();
+enableValidation(config);
+
 

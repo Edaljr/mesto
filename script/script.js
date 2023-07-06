@@ -1,24 +1,3 @@
-const editFormElement = document.querySelector('form[name="editForm"]');
-const addFormElement = document.querySelector('form[name="addForm"]');
-const nameInput = document.querySelector('input[name="name"]');
-const jobInput = document.querySelector('input[name="job"]');
-const inputNameFormAddNewCard = document.querySelector('input[name="title"]');
-const inputLinkFormAddNewCard = document.querySelector('input[name="link"]');
-const profileTitle = document.querySelector(".profile__title");
-const profileSubtitle = document.querySelector(".profile__subtitle");
-const profileEditBtn = document.querySelector(".profile__edit-btn");
-const profileAddBtn = document.querySelector(".profile__add-btn");
-const popupAdd = document.querySelector(".popup_add");
-const popupEdit = document.querySelector(".popup_edit");
-const cardsContainer = document.querySelector(".cards__container");
-const card = document.querySelector("#card").content;
-const previewPopup = document.querySelector(".popup_image-scale");
-const imageElement = document.querySelector(".popup__image");
-const previewPopupSubtitle = document.querySelector(".popup__subtitle");
-const closeBtnPreview = previewPopup.querySelector(".popup__close-btn");
-const closeBtnAdd = popupAdd.querySelector(".popup__close-btn");
-const closeBtnEdit = popupEdit.querySelector(".popup__close-btn");
-const popupSaveAddBtn = popupAdd.querySelector(".popup__btn-add");
 
 //Create Card
 const createCard = (name, imgLink) => {
@@ -56,14 +35,13 @@ const deleteCard = (card) => {
 const onPopupOpen = (modalWindow) => {
   modalWindow.classList.add("popup_opened");
   keyHandler();
-  overlayClickHandler();
+  // overlayClickHandler();
 };
 
 //Popup close
 const onPopupClose = (modalWindow) => {
   modalWindow.classList.remove("popup_opened");
   document.removeEventListener("keydown", keyDownHandler, true);
-  document.removeEventListener("click", overlayClickCallback, true);
 };
 
 function setEditFormTextValue() {
@@ -122,18 +100,17 @@ profileEditBtn.addEventListener("click", (evt) => {
 
 editFormElement.addEventListener("submit", handleEditFormSubmit);
 
-// Click zakritie Overlay
-function overlayClickHandler() {
-  document.addEventListener("click", overlayClickCallback, true);
-}
-function overlayClickCallback(evt) {
-  const openedPopup = document.querySelector(".popup_opened");
-  const openedPopupContainer = openedPopup.querySelector(".popup__container");
-  const isClickInside = openedPopupContainer.contains(evt.target);
-  if (!isClickInside) {
-    onPopupClose(openedPopup);
+// Click zakritie Overlay i popupa
+const popups = document.querySelectorAll('.popup'); //Ищем все попапы
+popups.forEach((popup) => {
+ popup.addEventListener('click', (evt) => {
+  if (evt.target === evt.currentTarget || evt.target.classList.contains('popup__close-btn')){
+    onPopupClose(popup);
   }
-}
+  console.log(111);
+ });
+});
+
 
 //Keydown Esc zakritie popupov
 function keyHandler() {
@@ -152,9 +129,6 @@ profileAddBtn.addEventListener("click", (evt) => {
   evt.preventDefault();
   onPopupOpen(popupAdd);
   setCardsTextValue();
-  disabledButton(popupSaveAddBtn);
+  disabledButton(popupSaveAddBtn, config);
 });
 
-closeBtnPreview.addEventListener("click", () => onPopupClose(previewPopup));
-closeBtnAdd.addEventListener("click", () => onPopupClose(popupAdd));
-closeBtnEdit.addEventListener("click", () => onPopupClose(popupEdit));

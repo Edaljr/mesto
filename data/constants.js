@@ -19,3 +19,36 @@ const closeBtnPreview = previewPopup.querySelector(".popup__close-btn");
 const closeBtnAdd = popupAdd.querySelector(".popup__close-btn");
 const closeBtnEdit = popupEdit.querySelector(".popup__close-btn");
 const popupSaveAddBtn = popupAdd.querySelector(".popup__btn-add");
+
+const config ={
+  formSelector: '.popup__form',
+  inputSelector: '.popup__input',
+  submitButtonSelector: '.popup__button',
+  inactiveButtonClass: 'popup__button_disabled',
+  inputErrorClass: 'popup__input_type_error',
+}
+
+export {
+  config,
+  editFormElement,
+  addFormElement,
+  nameInput,
+  jobInput,
+  popupAdd,
+  popupEdit,
+  inputNameFormAddNewCard,
+  inputLinkFormAddNewCard,
+  profileTitle,
+  profileSubtitle,
+  profileEditBtn,
+  profileAddBtn,
+  cardsContainer,
+  card,
+  imageElement,
+  previewPopupSubtitle,
+  previewPopup,
+  closeBtnPreview,
+  closeBtnAdd,
+  closeBtnEdit,
+  popupSaveAddBtn,
+};

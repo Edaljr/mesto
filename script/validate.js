@@ -1,10 +1,4 @@
-const config ={
-  formSelector: '.popup__form',
-  inputSelector: '.popup__input',
-  submitButtonSelector: '.popup__button',
-  inactiveButtonClass: 'popup__button_disabled',
-  inputErrorClass: 'popup__input_type_error',
-}
+
 
 //pokazat' text oshibki
 function showError(inputElement, errorElement, config) {
@@ -53,7 +47,6 @@ function toogleButtonState(buttonElement, isActive, config) {
 function setEventListener(formElement, config) {
   const inputList = formElement.querySelectorAll(config.inputSelector);
   const submitButtonElement = formElement.querySelector(config.submitButtonSelector);
-
   [...inputList].forEach(function (inputElement) {
     inputElement.addEventListener("input", function () {
       toogleButtonState(submitButtonElement, formElement.checkValidity(), config);

@@ -20,13 +20,13 @@ const closeBtnAdd = popupAdd.querySelector(".popup__close-btn");
 const closeBtnEdit = popupEdit.querySelector(".popup__close-btn");
 const popupSaveAddBtn = popupAdd.querySelector(".popup__btn-add");
 
-const config ={
-  formSelector: '.popup__form',
-  inputSelector: '.popup__input',
-  submitButtonSelector: '.popup__button',
-  inactiveButtonClass: 'popup__button_disabled',
-  inputErrorClass: 'popup__input_type_error',
-}
+const config = {
+  formSelector: ".popup__form",
+  inputSelector: ".popup__input",
+  submitButtonSelector: ".popup__button",
+  inactiveButtonClass: "popup__button_disabled",
+  inputErrorClass: "popup__input_type_error",
+};
 
 export {
   config,

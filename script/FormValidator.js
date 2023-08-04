@@ -5,40 +5,37 @@ export class FormValidator {
     this._inactiveButtonClass = config.inactiveButtonClass;
     this._inputErrorClass = config.inputErrorClass;
     this._form = form;
+    this._submitButtonElement = form.querySelector(this._submitButtonSelector);
+    this._inputList = this._form.querySelectorAll(this._inputSelector);
   }
 
   //Sostoyanie knopki disabled/enabled
-  _toogleButtonState(buttonElement, isActive) {
+  _toggleButtonState(isActive) {
     if (!isActive) {
-      this._disabledButton(buttonElement, this._inactiveButtonClass);
+      this.disabledButton();
     } else {
-      this._enabledButton(buttonElement, this._inactiveButtonClass);
+      this._enabledButton();
     }
   }
 
-  //function knopki disabled
-  _disabledButton(buttonElement, btnClass) {
-    buttonElement.disabled = "disabled";
-    buttonElement.classList.add(btnClass);
+  //function button disabled
+  disabledButton() {
+    this._submitButtonElement.disabled = "disabled";
+    this._submitButtonElement.classList.add(this._inactiveButtonClass);
   }
 
-  //function knopki enabled
-  _enabledButton(buttonElement, btnClass) {
-    buttonElement.disabled = false;
-    buttonElement.classList.remove(btnClass);
+  //function button enabled
+  _enabledButton() {
+    this._submitButtonElement.disabled = false;
+    this._submitButtonElement.classList.remove(this._inactiveButtonClass);
   }
 
   //Poisk form i veshaem obrabotchik,Poisk Inputov, knopki / disable knopki /obrabotchik na inputi
   enableValidation() {
-    const inputList = this._form.querySelectorAll(this._inputSelector);
-    const submitButtonElement = this._form.querySelector(
-      this._submitButtonSelector
-    );
-    [...inputList].forEach((inputElement) => {
+    [...this._inputList].forEach((inputElement) => {
       inputElement.addEventListener("input", () => {
         const valid = this._form.checkValidity();
-
-        this._toogleButtonState(submitButtonElement, valid);
+        this._toggleButtonState(valid);
         this._checkInputValidity(inputElement, this._form);
       });
     });
@@ -49,7 +46,7 @@ export class FormValidator {
     });
   }
 
-  //proverka Validnosti inputov
+  //check Validity of inputs
   _checkInputValidity(inputElement) {
     const isInputValid = inputElement.validity.valid;
     const errorElement = this._form.querySelector(
@@ -62,15 +59,25 @@ export class FormValidator {
     }
   }
 
-  //pokazat' text oshibki
+  //Show text error
   _showError(inputElement, errorElement) {
     inputElement.classList.add(this._inputErrorClass);
     errorElement.textContent = inputElement.validationMessage;
   }
 
-  //spryatat' text oshibki
+  //Hide text error
   _hideError(inputElement, errorElement) {
     inputElement.classList.remove(this._inputErrorClass);
-    errorElement.textContent = inputElement.validationMessage;
+    errorElement.textContent = "";
+  }
+
+  //Reset validation Message
+  resetValidation() {
+    this._inputList.forEach((inputElement) => {
+      const errorElement = this._form.querySelector(
+        `#${inputElement.name}-error`
+      );
+      this._hideError(inputElement, errorElement);
+    });
   }
 }

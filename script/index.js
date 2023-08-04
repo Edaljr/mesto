@@ -1,122 +1,140 @@
-import {initialCards} from '../data/initialCards.js';
-import * as selector from '../data/constants.js';
-import {Card} from './card.js';
-import {FormValidator} from './FormValidator.js';
+import { initialCards } from "../data/initialCards.js";
+import {
+  config,
+  editFormElement,
+  addFormElement,
+  nameInput,
+  jobInput,
+  popupAdd,
+  popupEdit,
+  inputNameFormAddNewCard,
+  inputLinkFormAddNewCard,
+  profileTitle,
+  profileSubtitle,
+  profileEditBtn,
+  profileAddBtn,
+  cardsContainer,
+  card,
+  imageElement,
+  previewPopupSubtitle,
+  previewPopup,
+  closeBtnPreview,
+  closeBtnAdd,
+  closeBtnEdit,
+  popupSaveAddBtn,
+} from "../data/constants.js";
+import { Card } from "./Card.js";
+import { FormValidator } from "./FormValidator.js";
+
+  const addCardFormValidation = new FormValidator(config, addFormElement)
+  const editCardFormValidation = new FormValidator(config, editFormElement)
+  addCardFormValidation.enableValidation();
+  editCardFormValidation.enableValidation();
+  addCardFormValidation.disabledButton();
+
 
 window.addEventListener("load", (event) => {
-  for (let card = 0; card < initialCards.length; card++) {
+  initialCards.forEach((cardItem) => {
     const newCard = new Card(
       {
-        imgLink:initialCards[card].link,
-        name:initialCards[card].name,
+        imgLink: cardItem.link,
+        name: cardItem.name,
       },
-      selector.card
-
+      card
     );
     newCard.generateCard();
-    renderCard(newCard.generateCard(), selector.cardsContainer)
-  }
-
-  const formList = document.querySelectorAll(selector.config.formSelector);
-  [...formList].forEach(function (formElement) {
-    const form = new FormValidator (
-      selector.config,
-      formElement
-    )
-    form.enableValidation()
+    renderCard(newCard.generateCard(), cardsContainer);
   });
-
-  document.addEventListener("keydown", keyDownHandler, true);
 });
+
+
+
+//Render Cards
+const renderCard = (card, wrap) => {
+  wrap.prepend(card);
+};
+
+export const onPopupOpen = (modalWindow) => {
+  modalWindow.classList.add("popup_opened");
+  keyHandler();
+
+};
+
+// Popup close
+const onPopupClose = (modalWindow) => {
+  modalWindow.classList.remove("popup_opened");
+  addCardFormValidation.resetValidation();
+  editCardFormValidation.resetValidation();
+};
+
+function setEditFormTextValue() {
+  nameInput.value = profileTitle.textContent.trim();
+  jobInput.value = profileSubtitle.textContent.trim();
+}
+
+//Submit Form
+const handleEditFormSubmit = (evt) => {
+  evt.preventDefault();
+  profileTitle.textContent = nameInput.value;
+  profileSubtitle.textContent = jobInput.value;
+  onPopupClose(popupEdit);
+};
+
+const keyHandler = () => {
+  document.addEventListener("keydown", keyDownHandler, true);
+};
 
 const keyDownHandler = (evt) => {
   const openedPopup = document.querySelector(".popup_opened");
   if (evt.key === "Escape") {
     openedPopup.classList.remove("popup_opened");
+    document.removeEventListener("keydown", keyDownHandler, true);
   }
-}
-
-//Render Cartochek
-const renderCard = (card, wrap) => {
-  wrap.prepend(card);
 };
 
-const onPopupOpen = (modalWindow) => {
-  modalWindow.classList.add("popup_opened");
-}
-
-// Popup close
-const onPopupClose = (modalWindow) => {
-  modalWindow.classList.remove("popup_opened");
-};
-
-function setEditFormTextValue() {
-  selector.nameInput.value = selector.profileTitle.textContent.trim();
-  selector.jobInput.value = selector.profileSubtitle.textContent.trim();
-}
-
-function setCardsTextValue() {
-  selector.inputNameFormAddNewCard.value = selector.inputNameFormAddNewCard.textContent;
-  selector.inputLinkFormAddNewCard.value = selector.inputLinkFormAddNewCard.textContent;
-}
-
-
-//Submit Form
-const handleEditFormSubmit = (evt) => {
-  evt.preventDefault();
-  selector.profileTitle.textContent = selector.nameInput.value;
-  selector.profileSubtitle.textContent = selector.jobInput.value;
-  onPopupClose(selector.popupEdit);
-};
-
-//submit dobavleniya cards
+//submit add cards
 const handleAddFormSubmit = (evt) => {
   evt.preventDefault();
-
   const newCard = new Card(
     {
-      imgLink: selector.inputLinkFormAddNewCard.value,
-      name: selector.inputNameFormAddNewCard.value,
+      imgLink: inputLinkFormAddNewCard.value,
+      name: inputNameFormAddNewCard.value,
     },
-    selector.card
-
+    card
   );
   newCard.generateCard();
-  renderCard(newCard.generateCard(), selector.cardsContainer)
-  onPopupClose(selector.popupAdd);
+  renderCard(newCard.generateCard(), cardsContainer);
+  document.removeEventListener("keydown", keyDownHandler, true);
+  onPopupClose(popupAdd);
+
 };
 
+editFormElement.addEventListener("submit", handleEditFormSubmit);
 
+// Click close Overlay i popup
+const popups = document.querySelectorAll(".popup");
+popups.forEach((popup) => {
+  popup.addEventListener("click", (evt) => {
+    if (
+      evt.target === evt.currentTarget ||
+      evt.target.classList.contains("popup__close-btn")
+    ) {
+      onPopupClose(popup);
+    }
+  });
+});
 
-selector.profileEditBtn.addEventListener("click", (evt) => {
+addFormElement.addEventListener("submit", handleAddFormSubmit);
+
+profileAddBtn.addEventListener("click", (evt) => {
   evt.preventDefault();
-  onPopupOpen(selector.popupEdit);
+  onPopupOpen(popupAdd);
+  addCardFormValidation.disabledButton();
+  addFormElement.reset();
+});
+
+profileEditBtn.addEventListener("click", (evt) => {
+  evt.preventDefault();
+  onPopupOpen(popupEdit);
   setEditFormTextValue();
 });
-
-selector.editFormElement.addEventListener("submit", handleEditFormSubmit);
-
-// Click zakritie Overlay i popupa
-const popups = document.querySelectorAll('.popup');
-popups.forEach((popup) => {
- popup.addEventListener('click', (evt) => {
-  if (evt.target === evt.currentTarget || evt.target.classList.contains('popup__close-btn')){
-    onPopupClose(popup);
-  }
- });
-});
-
-const disabledButton = (buttonElement,config) => {
-  buttonElement.disabled = "disabled";
-  buttonElement.classList.add(config.inactiveButtonClass);
-}
-
-
-selector.addFormElement.addEventListener("submit", handleAddFormSubmit);
-selector.profileAddBtn.addEventListener("click", (evt) => {
-  evt.preventDefault();
-  onPopupOpen(selector.popupAdd);
-  setCardsTextValue();
-  disabledButton(selector.popupSaveAddBtn, selector.config);
-});
-

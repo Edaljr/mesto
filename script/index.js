@@ -14,14 +14,7 @@ import {
   profileEditBtn,
   profileAddBtn,
   cardsContainer,
-  card,
-  imageElement,
-  previewPopupSubtitle,
-  previewPopup,
-  closeBtnPreview,
-  closeBtnAdd,
-  closeBtnEdit,
-  popupSaveAddBtn,
+  card
 } from "../data/constants.js";
 import { Card } from "./Card.js";
 import { FormValidator } from "./FormValidator.js";
@@ -63,8 +56,7 @@ export const onPopupOpen = (modalWindow) => {
 // Popup close
 const onPopupClose = (modalWindow) => {
   modalWindow.classList.remove("popup_opened");
-  addCardFormValidation.resetValidation();
-  editCardFormValidation.resetValidation();
+  document.removeEventListener("keydown", keyDownHandler, true);
 };
 
 function setEditFormTextValue() {
@@ -87,7 +79,7 @@ const keyHandler = () => {
 const keyDownHandler = (evt) => {
   const openedPopup = document.querySelector(".popup_opened");
   if (evt.key === "Escape") {
-    openedPopup.classList.remove("popup_opened");
+    onPopupClose(openedPopup)
     document.removeEventListener("keydown", keyDownHandler, true);
   }
 };
@@ -104,7 +96,6 @@ const handleAddFormSubmit = (evt) => {
   );
   newCard.generateCard();
   renderCard(newCard.generateCard(), cardsContainer);
-  document.removeEventListener("keydown", keyDownHandler, true);
   onPopupClose(popupAdd);
 
 };
@@ -128,6 +119,7 @@ addFormElement.addEventListener("submit", handleAddFormSubmit);
 
 profileAddBtn.addEventListener("click", (evt) => {
   evt.preventDefault();
+  addCardFormValidation.resetValidation();
   onPopupOpen(popupAdd);
   addCardFormValidation.disabledButton();
   addFormElement.reset();
@@ -135,6 +127,7 @@ profileAddBtn.addEventListener("click", (evt) => {
 
 profileEditBtn.addEventListener("click", (evt) => {
   evt.preventDefault();
+  editCardFormValidation.resetValidation();
   onPopupOpen(popupEdit);
   setEditFormTextValue();
 });

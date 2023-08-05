@@ -1,4 +1,8 @@
-import * as selector from "../data/constants.js";
+import {
+  imageElement,
+  previewPopupSubtitle,
+  previewPopup,
+  } from "../data/constants.js";
 import {onPopupOpen} from "./index.js"
 
 export class Card {
@@ -40,10 +44,10 @@ export class Card {
   }
 
   _handlePreviewImage() {
-    selector.imageElement.src = this._imgLink;
-    selector.imageElement.alt = `Изображение ${this._name}`;
-    selector.previewPopupSubtitle.textContent = this._name;
-    onPopupOpen(selector.previewPopup);
+    imageElement.src = this._imgLink;
+    imageElement.alt = `Изображение ${this._name}`;
+    previewPopupSubtitle.textContent = this._name;
+    onPopupOpen(previewPopup);
   }
 
   _handleLikeIcon = (evt) => {

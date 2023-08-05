@@ -50,5 +50,5 @@ export {
   closeBtnPreview,
   closeBtnAdd,
   closeBtnEdit,
-  popupSaveAddBtn,
+  popupSaveAddBtn
 };

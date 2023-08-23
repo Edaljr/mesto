@@ -1,17 +1,14 @@
-import {
-  imageElement,
-  previewPopupSubtitle,
-  previewPopup,
-  } from "../data/constants.js";
-import {onPopupOpen} from "./index.js"
+import { Popup } from "../script/Popup.js"
 
-export class Card {
-  constructor(data, templateSelector) {
+export class Card extends Popup {
+  constructor(data, templateSelector, handleCardElement) {
+    super(data);
     this._imgLink = data.imgLink;
     this._name = data.name;
     this._templateSelector = templateSelector;
     this._cardElement = this._getTemplate();
     this._photoElement = this._cardElement.querySelector(".cards__photo");
+    this._handleCardElement = handleCardElement;
   }
 
   _getTemplate() {
@@ -31,26 +28,25 @@ export class Card {
     const cardImage = this._photoElement;
     const deleteButton = this._cardElement.querySelector(".cards__btn-remove");
     deleteButton.addEventListener("click", () => this._deleteCard(this._cardElement));
+
     cardImage.addEventListener("click", () =>
-      this._handlePreviewImage(this._imgLink, this._name)
+      this._handleCardElement()
     );
-    likeButton.addEventListener("click", (evt) => {
-      this._handleLikeIcon(evt);
-    });
+    likeButton.addEventListener("click", this._handleLikeIcon, false);
   }
 
   _deleteCard(card) {
     card.remove();
   }
 
-  _handlePreviewImage() {
-    imageElement.src = this._imgLink;
-    imageElement.alt = `Изображение ${this._name}`;
-    previewPopupSubtitle.textContent = this._name;
-    onPopupOpen(previewPopup);
-  }
+  // _handlePreviewImage() {
+  //   imageElement.src = this._imgLink;
+  //   imageElement.alt = `Изображение ${this._name}`;
+  //   previewPopupSubtitle.textContent = this._name;
+    // onPopupOpen(previewPopup);
+  // }
 
-  _handleLikeIcon = (evt) => {
+  _handleLikeIcon (evt) {
     evt.target.classList.toggle("cards__like-active");
   };
 }

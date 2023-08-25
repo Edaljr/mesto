@@ -1,5 +1,3 @@
-import { profileTitle, profileSubtitle } from "../data/constants.js";
-
 export class UserInfo {
   constructor({ nameElement, jobElement }) {
     this._nameInputElement = nameElement;
@@ -13,8 +11,8 @@ export class UserInfo {
     };
   }
 
-  setUserInfo(userInfo) {
-    profileSubtitle.textContent = userInfo.job.trim();
-    profileTitle.textContent = userInfo.name.trim();
+  setUserInfo(selectors, userInfo) {
+    selectors.subTitle.textContent = userInfo.job.trim();
+    selectors.title.textContent = userInfo.name.trim();
   }
 }

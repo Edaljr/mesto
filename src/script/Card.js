@@ -1,14 +1,13 @@
-import { Popup } from "../script/Popup.js"
-
-export class Card extends Popup {
+export class Card {
   constructor(data, templateSelector, handleCardElement) {
-    super(data);
     this._imgLink = data.imgLink;
     this._name = data.name;
     this._templateSelector = templateSelector;
     this._cardElement = this._getTemplate();
     this._photoElement = this._cardElement.querySelector(".cards__photo");
     this._handleCardElement = handleCardElement;
+    this._likeButton = this._cardElement.querySelector(".cards__like");
+    this._deleteButton = this._cardElement.querySelector(".cards__btn-remove");
   }
 
   _getTemplate() {
@@ -24,27 +23,17 @@ export class Card extends Popup {
   }
 
   _setEventListeners() {
-    const likeButton = this._cardElement.querySelector(".cards__like");
-    const cardImage = this._photoElement;
-    const deleteButton = this._cardElement.querySelector(".cards__btn-remove");
-    deleteButton.addEventListener("click", () => this._deleteCard(this._cardElement));
+    this._deleteButton.addEventListener("click", () => this._deleteCard(this._cardElement));
 
-    cardImage.addEventListener("click", () =>
+    this._photoElement.addEventListener("click", () =>
       this._handleCardElement()
     );
-    likeButton.addEventListener("click", this._handleLikeIcon, false);
+    this._likeButton.addEventListener("click", this._handleLikeIcon, false);
   }
 
   _deleteCard(card) {
     card.remove();
   }
-
-  // _handlePreviewImage() {
-  //   imageElement.src = this._imgLink;
-  //   imageElement.alt = `Изображение ${this._name}`;
-  //   previewPopupSubtitle.textContent = this._name;
-    // onPopupOpen(previewPopup);
-  // }
 
   _handleLikeIcon (evt) {
     evt.target.classList.toggle("cards__like-active");

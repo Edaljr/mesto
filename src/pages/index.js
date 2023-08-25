@@ -1,56 +1,42 @@
 import "../pages/index.css";
 import { initialCards } from "../data/initialCards.js";
 import {
+  addFormElement,
+  card,
+  cardsContainer,
   config,
   editFormElement,
-  addFormElement,
-  nameInput,
+  imageElement,
+  inputLinkFormAddNewCard,
+  inputNameFormAddNewCard,
   jobInput,
+  nameInput,
   popupAdd,
   popupEdit,
-  inputNameFormAddNewCard,
-  inputLinkFormAddNewCard,
-  profileTitle,
-  profileSubtitle,
-  profileEditBtn,
-  profileAddBtn,
-  cardsContainer,
-  card,
-  imageElement,
-  previewPopupSubtitle,
   previewPopup,
+  previewPopupSubtitle,
+  profileAddBtn,
+  profileEditBtn,
+  profileSubtitle,
+  profileTitle,
 } from "../data/constants.js";
 import { Card } from "../script/Card.js";
 import { FormValidator } from "../script/FormValidator.js";
 import { Section } from "../script/Section.js";
-import { Popup } from "../script/Popup.js";
 import { PopupWithForm } from "../script/PopupWithForm.js";
 import { UserInfo } from "../script/UserInfo";
-
+import { PopupWithImage } from "../script/PopupWithImage";
 
 const cardsSection = new Section(
   {
     items: initialCards,
     render: (cardItem) => {
-      const newCard = new Card(
-        {
-          imgLink: cardItem.link,
-          name: cardItem.name,
-        },
-        card,
-        handlePreviewImage
-      );
-      cardsSection.addItem(newCard.generateCard());
+      const newCard = createCard(cardItem);
+      cardsSection.addItem(newCard);
     },
   },
   cardsContainer
 );
-
-const popupAddClass = new Popup(popupAdd);
-
-const popupEditClass = new Popup(popupEdit);
-
-const popupPreviewClass = new Popup(previewPopup);
 
 const addCardFormValidation = new FormValidator(config, addFormElement);
 
@@ -63,36 +49,36 @@ const popupEditForm = new PopupWithForm(
 );
 
 const popupAddForm = new PopupWithForm(
-  popupEdit,
+  popupAdd,
   handleAddFormSubmit,
   addFormElement
 );
 
+const popupPreviewPopup = new PopupWithImage(previewPopup);
+
+popupEditForm.setEventListeners();
+popupAddForm.setEventListeners();
+popupPreviewPopup.setEventListeners();
 
 addCardFormValidation.enableValidation();
 editCardFormValidation.enableValidation();
 addCardFormValidation.disabledButton();
 cardsSection.renderCards();
 
-function handlePreviewImage() {
-  popupPreviewClass.setEventListeners();
-  imageElement.src = this._imgLink;
-  imageElement.alt = `Изображение ${this._name}`;
-  previewPopupSubtitle.textContent = this._name;
-  popupPreviewClass.onPopupOpen();
-}
-
 function handleAddFormSubmit() {
-  const newCard = new Card(
-    {
-      imgLink: inputLinkFormAddNewCard.value,
-      name: inputNameFormAddNewCard.value,
-    },
-    card
+  const newCard = createCard({
+    link: inputLinkFormAddNewCard.value,
+    name: inputNameFormAddNewCard.value,
+  });
+  cardsSection.addItem(newCard);
+  popupAddForm.onPopupOpen();
+}
+function handlePreviewImage(item) {
+  popupPreviewPopup.setEventListeners();
+  popupPreviewPopup.onPopupOpen(
+    { imgLink: item.link, name: item.name },
+    { image: imageElement, subtitle: previewPopupSubtitle }
   );
-  newCard.generateCard();
-  cardsSection.addItem(newCard.generateCard());
-  popupAddClass.onPopupClose();
 }
 
 function handleSubmitEdit() {
@@ -100,7 +86,10 @@ function handleSubmitEdit() {
     nameElement: nameInput,
     jobElement: jobInput,
   });
-  userInfo.setUserInfo(userInfo.getUserInfo());
+  userInfo.setUserInfo(
+    { title: profileTitle, subTitle: profileSubtitle },
+    userInfo.getUserInfo()
+  );
   popupEditForm.onPopupClose();
 }
 
@@ -109,23 +98,28 @@ function setEditFormTextValue() {
   jobInput.value = profileSubtitle.textContent.trim();
 }
 
-popupEditForm.setEventListeners();
-
-popupAddForm.setEventListeners();
+const createCard = (item) => {
+  const newCard = new Card(
+    {
+      imgLink: item.link,
+      name: item.name,
+    },
+    card,
+    () => handlePreviewImage(item)
+  );
+  return newCard.generateCard();
+};
 
 profileAddBtn.addEventListener("click", (evt) => {
   evt.preventDefault();
   addCardFormValidation.resetValidation();
-  popupAddClass.onPopupOpen();
-  popupAddClass.setEventListeners();
+  popupAddForm.onPopupOpen();
   addCardFormValidation.disabledButton();
-  addFormElement.reset();
 });
 
 profileEditBtn.addEventListener("click", (evt) => {
   evt.preventDefault();
   editCardFormValidation.resetValidation();
-  popupEditClass.onPopupOpen();
-  popupEditClass.setEventListeners();
+  popupEditForm.onPopupOpen();
   setEditFormTextValue();
 });

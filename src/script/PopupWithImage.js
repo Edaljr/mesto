@@ -1,14 +1,14 @@
-import { imageElement, previewPopupSubtitle } from "../data/constants.js";
 import { Popup } from "../script/Popup.js";
 
 export class PopupWithImage extends Popup {
-  constructor() {
-    this._popupSelector = super._popup;
+  constructor(selectorPopup) {
+    super(selectorPopup);
   }
 
-  onPopupOpen(imgLink, name) {
-    imageElement.src = imgLink;
-    imageElement.alt = `Изображение ${name}`;
-    previewPopupSubtitle.textContent = name;
+  onPopupOpen(data, selectors) {
+    selectors.image.src = data.imgLink;
+    selectors.image.alt = `Изображение ${data.name}`;
+    selectors.subtitle.textContent = data.name;
+    super.onPopupOpen();
   }
 }

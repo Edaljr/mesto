@@ -7,8 +7,6 @@ import {
   config,
   editFormElement,
   imageElement,
-  inputLinkFormAddNewCard,
-  inputNameFormAddNewCard,
   jobInput,
   nameInput,
   popupAdd,
@@ -27,6 +25,7 @@ import { PopupWithForm } from "../script/PopupWithForm.js";
 import { UserInfo } from "../script/UserInfo";
 import { PopupWithImage } from "../script/PopupWithImage";
 
+
 const cardsSection = new Section(
   {
     items: initialCards,
@@ -37,6 +36,7 @@ const cardsSection = new Section(
   },
   cardsContainer
 );
+
 
 const addCardFormValidation = new FormValidator(config, addFormElement);
 
@@ -59,44 +59,47 @@ const popupPreviewPopup = new PopupWithImage(previewPopup);
 popupEditForm.setEventListeners();
 popupAddForm.setEventListeners();
 popupPreviewPopup.setEventListeners();
-
 addCardFormValidation.enableValidation();
 editCardFormValidation.enableValidation();
 addCardFormValidation.disabledButton();
 cardsSection.renderCards();
 
-function handleAddFormSubmit() {
+
+const userInfo = new UserInfo({
+  nameElement: profileTitle,
+  jobElement: profileSubtitle,
+}
+);
+
+function handleAddFormSubmit(value) {
   const newCard = createCard({
-    link: inputLinkFormAddNewCard.value,
-    name: inputNameFormAddNewCard.value,
+    link: value.link,
+    name: value.title,
   });
   cardsSection.addItem(newCard);
   popupAddForm.onPopupOpen();
-}
-function handlePreviewImage(item) {
-  popupPreviewPopup.setEventListeners();
-  popupPreviewPopup.onPopupOpen(
-    { imgLink: item.link, name: item.name },
-    { image: imageElement, subtitle: previewPopupSubtitle }
-  );
+
 }
 
-function handleSubmitEdit() {
-  const userInfo = new UserInfo({
-    nameElement: nameInput,
-    jobElement: jobInput,
-  });
-  userInfo.setUserInfo(
-    { title: profileTitle, subTitle: profileSubtitle },
-    userInfo.getUserInfo()
+function handlePreviewImage(value) {
+  popupPreviewPopup.onPopupOpen(
+    { imgLink: value.link, name: value.name },
+    { image: imageElement, subtitle: previewPopupSubtitle }
   );
+
+}
+
+function handleSubmitEdit(value) {
+  userInfo.setUserInfo(value);
+  setEditFormTextValue(value);
   popupEditForm.onPopupClose();
 }
 
-function setEditFormTextValue() {
-  nameInput.value = profileTitle.textContent.trim();
-  jobInput.value = profileSubtitle.textContent.trim();
+function setEditFormTextValue(values) {
+  nameInput.value = values.name;
+  jobInput.value = values.job;
 }
+
 
 const createCard = (item) => {
   const newCard = new Card(
@@ -121,5 +124,6 @@ profileEditBtn.addEventListener("click", (evt) => {
   evt.preventDefault();
   editCardFormValidation.resetValidation();
   popupEditForm.onPopupOpen();
-  setEditFormTextValue();
+  const userInfoObject = userInfo.getUserInfo();
+  setEditFormTextValue(userInfoObject);
 });

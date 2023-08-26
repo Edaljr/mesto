@@ -16,7 +16,6 @@ export class Popup {
   _keyDownHandler = (evt) => {
     if (evt.key === "Escape") {
       this.onPopupClose();
-      evt.target.reset();
     }
   };
 

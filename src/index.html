@@ -9,25 +9,31 @@
   <body class="body">
     <div class="page">
       <header class="header">
-        <img src="<%=require('./images/Vector.svg')%>" alt="Лого Место" class="header__logo" />
+        <img
+          src="<%=require('./images/Vector.svg')%>"
+          alt="Лого Место"
+          class="header__logo"
+        />
       </header>
       <main class="content">
         <section class="profile">
           <div class="profile__info">
-            <img
-              src="<%=require('./images/image.png')%>"
-              alt="Фото Профиля"
-              class="profile__avatar"
-            />
+            <div class="profile__avatar-container">
+              <img
+                src="<%=require('./images/image.png')%>"
+                alt="Фото Профиля"
+                class="profile__avatar"
+              />
+            </div>
             <div class="profile__heading">
-              <h1 class="profile__title">Жак-Ив Кусто</h1>
+              <h1 class="profile__title"></h1>
               <button
                 type="button"
                 class="profile__edit-btn"
                 aria-label="Редактировать"
               ></button>
             </div>
-            <p class="profile__subtitle">Исследователь океана</p>
+            <p class="profile__subtitle"></p>
           </div>
           <button
             type="button"
@@ -44,6 +50,7 @@
         <p class="footer__copyright">&#169; 2020 Mesto Russia</p>
       </footer>
 
+      <!-- redaktirovanie imeni -->
       <div class="popup popup_edit">
         <div class="popup__container">
           <button class="popup__close-btn" type="button"></button>
@@ -84,6 +91,7 @@
         </div>
       </div>
 
+      <!-- dobavlenie cartochki -->
       <div class="popup popup_add">
         <div class="popup__container">
           <button class="popup__close-btn" type="button" id="add"></button>
@@ -122,6 +130,7 @@
         </div>
       </div>
 
+      <!-- Image scale -->
       <div class="popup popup_image-scale">
         <div class="popup__container popup__container_image-scale">
           <button class="popup__close-btn" type="button"></button>
@@ -130,12 +139,54 @@
         </div>
       </div>
 
+
+      <!-- ydalenie cartochki -->
+      <div class="popup popup_delete-card">
+        <form class="popup__container popup__container_confirm-change">
+        <button class="popup__close-btn" type="button"></button>
+        <h2 class="popup__title">Вы уверены?</h2>
+
+          <button class="popup__button popup__btn-delete" type="button">
+            Да
+          </button>
+        </form>
+      </div>
+
+      <!-- smena avatar -->
+      <div class="popup popup_avatar-edit">
+        <div class="popup__container popup__container_avatar-edit">
+          <button class="popup__close-btn" type="button"></button>
+          <h3 class="popup__title">Обновить аватар</h3>
+          <form name="avatarForm" class="popup__form" method="get" novalidate>
+            <fieldset class="popup__input-container">
+              <input
+                type="url"
+                class="popup__input"
+                required
+                placeholder="Ссылка на картинку"
+                name="link"
+              />
+              <span
+                class="popup__error popup__error_visible"
+                id="link-error"
+              ></span>
+            </fieldset>
+            <button type="submit" class="popup__button popup__btn-save">
+              Сохранить
+            </button>
+          </form>
+        </div>
+      </div>
+
       <template id="card">
         <li class="cards__item">
           <img class="cards__photo" />
           <div class="cards__info">
             <h2 class="cards__title"></h2>
-            <button class="cards__like" type="button"></button>
+            <div>
+              <button class="cards__like" type="button"></button>
+              <p class="cards__like-count"></p>
+            </div>
           </div>
           <button class="cards__btn-remove" type="button"></button>
         </li>

@@ -13,7 +13,18 @@ export class Section {
     });
   }
 
-  addItem(card) {
-    this._container.prepend(card);
+  addItem(card, position = 'append') {
+    switch (position) {
+      case 'append':
+        this._container.append(card);
+        break;
+        case 'prepend':
+          this._container.prepend(card);
+          break;
+      default:
+        console.log('передана неверная позиция рендера');
+        break;
+    }
+
   }
 }

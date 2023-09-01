@@ -1,7 +1,7 @@
 .cards__info {
   display: flex;
   justify-content: space-between;
-  padding: 25px 30px 32px 21px;
+  padding: 25px 20px 32px 21px;
   align-items: center;
   box-sizing: border-box;
 }
